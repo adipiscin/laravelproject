@@ -8,13 +8,18 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * varchar (255 chars)
+     * user
+     * likes
+     * created_at
+     * updated_at
      */
     public function up(): void
     {
-        Schema::dropIfExists('tasks');
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        Schema::create('ideas', function (Blueprint $table) {
+            $table->id();
+            $table->string('content');
+            $table->unsignedInteger('likes')->default(0);
             $table->timestamps();
         });
     }
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('ideas');
     }
 };

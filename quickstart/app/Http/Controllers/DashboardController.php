@@ -28,4 +28,27 @@ class DashboardController extends Controller
         'users' => $users
     ]);
     }
+
+    public function coba() {
+    
+        $users = [
+            [
+                'name' => 'Alex D',
+                'age' => 30,
+            ],
+            [
+                'name' => 'Dan A',
+                'age' => 25,
+            ],
+            [
+                'name' => 'John Doe',
+                'age' => 16,
+            ]
+        ];
+    
+            return view('dashboard', 
+        [
+            'users' => $users
+        ]);
+        }
 }
