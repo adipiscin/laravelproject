@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Idea;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -30,25 +31,13 @@ class DashboardController extends Controller
     }
 
     public function coba() {
+
     
-        $users = [
-            [
-                'name' => 'Alex D',
-                'age' => 30,
-            ],
-            [
-                'name' => 'Dan A',
-                'age' => 25,
-            ],
-            [
-                'name' => 'John Doe',
-                'age' => 16,
-            ]
-        ];
-    
+            dump(Idea::all());
+
             return view('dashboard', 
         [
-            'users' => $users
+            'ideas' => Idea::orderBy('created_at', 'DESC')->paginate(4),
         ]);
-        }
+    }
 }
